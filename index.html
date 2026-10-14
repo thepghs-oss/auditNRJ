@@ -56,6 +56,7 @@ h2{border-left:8px solid #00cccc;padding-left:12px}
 .sg{display:block;width:100%;text-align:left;min-height:48px;padding:0 14px;border:0;border-bottom:1px solid var(--ln);background:var(--sf)}
 .subt{display:flex;gap:8px;overflow-x:auto;margin:0 0 16px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding:6px 0;z-index:2}.subt .chip{flex:none}.sub{display:none}.sub.on{display:grid}
 #toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ac);color:var(--ai);padding:12px 18px;border-radius:12px;font-weight:600;z-index:20;display:none}
+.vh{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}label.btn{position:relative;display:flex;align-items:center;justify-content:center;cursor:pointer}
 .pgd{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:14px}.pc{background:var(--sf);border:1px solid var(--ln);border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:8px}.pc img{width:100%;border-radius:8px}
 #rpt{display:none}
 body.ms #rpt{display:block;position:absolute;left:-9999px;top:0;width:1000px}
@@ -175,7 +176,7 @@ function fld(sid,x,pre='',lp=''){
  else if(t=='c'||t=='r'){w=' w';const ch=x.o.map(o=>`<button type="button" class="chip" data-k="${k}" data-v="${E(o)}" data-m="${t}" aria-pressed="false">${E(o)}</button>`).join('');b=(t=='c'&&x.o.length>7)?`<details class="dd" data-kk="${k}"><summary><b>${lab}</b><em></em></summary><div class="chips">${ch}</div></details>`:`<span>${lab}</span><div class="chips">${ch}</div>`}
  else if(t=='l'){w=' w';b=`<span>${lab}</span>`+x.o.map(([n,c])=>`<div class="lrow"><button type="button" class="chip" data-k="${k}_${c}" data-m="b" aria-pressed="false">${E(n)}</button><input data-k="${k}_${c}_nb" inputmode="numeric" placeholder="Nb"><input data-k="${k}_${c}_loc" placeholder="Emplacement"></div>`).join('')}
  else if(t=='t'){w=' w';b='<div id="tot"></div>'}
- else if(t=='ph'){w=' w';b='<div class="row"><button type="button" class="btn pri" id="cam">Prendre une photo</button><button type="button" class="btn" id="imp">Importer</button></div><input type="file" id="fcam" accept="image/*" capture="environment" hidden><input type="file" id="fimp" accept="image/*" multiple hidden><div id="pg" class="pgd"></div>'}
+ else if(t=='ph'){w=' w';b='<div class="row"><label class="btn pri">Prendre une photo<input type="file" id="fcam" accept="image/*" capture="environment" class="vh"></label><label class="btn">Importer des photos<input type="file" id="fimp" accept="image/*" multiple class="vh"></label></div><div id="pg" class="pgd"></div>'}
  else if(t=='z'){w=' w';b=`<div class="zt">${[1,2,3].map(z=>`<button type="button" class="chip" data-z="${z}" aria-pressed="${z==1}">Zone ${z}</button>`).join('')}</div>`+[1,2,3].map(z=>`<div class="zp${z==1?' on':''}" data-zp="${z}"><div class="g2">${ZF.map(y=>fld(sid,y,'z'+z+'_','Zone '+z+' – ')).join('')}</div></div>`).join('')}
  return `<div class="f${w}" data-key="${k}" data-l="${L}" data-t="${t}"${x.tw?' data-tw="1"':''}${ifa}>${b}</div>`}
 document.getElementById('nav').innerHTML=S.map((s,i)=>`<button class="nv" data-s="${i}">${s.t}</button>`).join('');
@@ -264,7 +265,7 @@ async function rpt(){const v=A.v,d=new Date().toLocaleDateString('fr-FR'),bg=get
 <div class="rb" style='background-image:${bg};background-position:center bottom;background-size:contain;background-repeat:no-repeat'></div><img class="cf" src="${$('.ft').src}">`;
  const rest=[['v'],['c','e'],['w','l','r']].map(a=>a.map(i=>H[i]).filter(Boolean).join('')).filter(Boolean);
  return pgs([p1,...rest],v.d_nom)}
-async function rptPh(){const ps=DB?await gall():[];if(!ps.length)return null;const a=[];
+async function rptPh(){const ps=await gall();if(!ps.length)return null;const a=[];
  for(let i=0;i<ps.length;i+=12)a.push(`<div class="chh"><h2>Annexe photographique</h2>${ico('ph')}</div><div class="rule"></div><div class="pgr">${ps.slice(i,i+12).map((p,j)=>`<figure><img src="${p.d}"><figcaption><span class="pn">${i+j+1}</span><span>${E(p.cat)}${p.note?' – '+E(p.note):''}</span></figcaption></figure>`).join('')}</div>`);
  return pgs(a,A.v.d_nom)}
 async function doPrint(h){$('#dg').close();$('#rpt').innerHTML=h;document.body.classList.add('ms');
@@ -310,16 +311,17 @@ document.addEventListener('click',async e=>{const s=e.target.closest('.sg'),i=e.
  else if(i=='geo')navigator.geolocation.getCurrentPosition(async p=>{try{const lo=p.coords.longitude,la=p.coords.latitude,j=await(await fetch(AD+'reverse/?lon='+lo+'&lat='+la)).json();j.features[0]?pick(j.features[0],[lo,la]):st('Aucune adresse trouvée ici.')}catch(x){st('Réseau indisponible : saisie manuelle.')}},()=>st('Position refusée ou indisponible.'));
  else if(i=='pcl'){try{const j=await(await fetch(AD+'search/?limit=1&q='+encodeURIComponent([A.v.d_adr,A.v.d_cp,A.v.d_vil].join(' ')))).json();j.features[0]?pcl(...j.features[0].geometry.coordinates):st('Adresse introuvable.')}catch(x){st('Réseau indisponible : saisie manuelle.')}}});
 let DB,pn=0;const PC=['Façade / vue générale','Murs','Toiture / combles','Menuiseries','Chaufferie / générateur','Émetteurs','ECS / ballon','Ventilation','Éclairage','Compteurs / plaques','Autre'];
-const rq=indexedDB.open('fa-photos',1);rq.onupgradeneeded=()=>rq.result.createObjectStore('p',{keyPath:'id'});rq.onsuccess=()=>{DB=rq.result;ph()};
+const MEM=[];let rq;try{rq=indexedDB.open('fa-photos',1);rq.onupgradeneeded=()=>rq.result.createObjectStore('p',{keyPath:'id'});rq.onsuccess=()=>{DB=rq.result;ph()};rq.onerror=()=>{DB=null;ph()}}catch(x){}
 const os=m=>DB.transaction('p',m).objectStore('p'),
- gall=(id=A.id)=>new Promise(r=>{const x=os('readonly').getAll();x.onsuccess=()=>r(x.result.filter(p=>p.aid==id).sort((a,b)=>a.t-b.t))}),
- pput=p=>new Promise(r=>{const x=os('readwrite').put(p);x.onsuccess=r}),
- pdel=id=>new Promise(r=>{const x=os('readwrite').delete(id);x.onsuccess=r});
-const rsz=fl=>new Promise(res=>{const im=new Image(),u=URL.createObjectURL(fl);im.onload=()=>{const z=Math.min(1,1400/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*z;c.height=im.height*z;c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);res(c.toDataURL('image/jpeg',.72))};im.src=u});
-async function ph(){if(!DB||!$('#pg'))return;const l=await gall();$('#pg').innerHTML=l.length?l.map(p=>`<div class="pc" data-id="${p.id}"><img src="${p.d}" alt=""><select data-pc="cat"><option value="">Catégorie…</option>${PC.map(c=>`<option${c==p.cat?' selected':''}>${c}</option>`).join('')}</select><input data-pc="note" placeholder="Légende (facultatif)" value="${E(p.note)}"><button type="button" class="btn" data-pd="${p.id}">Supprimer</button></div>`).join(''):'<p class="mu">Aucune photo pour cette fiche.</p>'}
+ gall=(id=A.id)=>DB?new Promise((r,j)=>{const x=os('readonly').getAll();x.onsuccess=()=>r(x.result.filter(p=>p.aid==id).sort((a,b)=>a.t-b.t));x.onerror=j}):Promise.resolve(MEM.filter(p=>p.aid==id).sort((a,b)=>a.t-b.t)),
+ pput=p=>DB?new Promise((r,j)=>{const x=os('readwrite').put(p);x.onsuccess=r;x.onerror=j}):(MEM.splice(0,MEM.length,...MEM.filter(y=>y.id!=p.id),p),Promise.resolve()),
+ pdel=id=>DB?new Promise((r,j)=>{const x=os('readwrite').delete(id);x.onsuccess=r;x.onerror=j}):(MEM.splice(0,MEM.length,...MEM.filter(y=>y.id!=id)),Promise.resolve());
+const rsz=fl=>new Promise(res=>{const fr=()=>{const r=new FileReader();r.onload=()=>res(r.result);r.readAsDataURL(fl)},im=new Image(),u=URL.createObjectURL(fl);
+ im.onload=()=>{try{const z=Math.min(1,1400/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*z;c.height=im.height*z;c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);res(c.toDataURL('image/jpeg',.72))}catch(x){fr()}};im.onerror=fr;im.src=u});
+async function ph(){if(!$('#pg'))return;const l=await gall();$('#pg').innerHTML=(DB?'':'<p class="mu" style="grid-column:1/-1">Stockage des photos indisponible sur ce navigateur : elles ne sont gardées que tant que la page reste ouverte.</p>')+(l.length?l.map(p=>`<div class="pc" data-id="${p.id}"><img src="${p.d}" alt=""><select data-pc="cat"><option value="">Catégorie…</option>${PC.map(c=>`<option${c==p.cat?' selected':''}>${c}</option>`).join('')}</select><input data-pc="note" placeholder="Légende (facultatif)" value="${E(p.note)}"><button type="button" class="btn" data-pd="${p.id}">Supprimer</button></div>`).join(''):'<p class="mu">Aucune photo pour cette fiche.</p>')}
 document.addEventListener('click',e=>{const b=e.target;if(b.id=='cam')$('#fcam').click();else if(b.id=='imp')$('#fimp').click();else if(b.dataset&&b.dataset.pd)pdel(+b.dataset.pd).then(ph)});
 document.addEventListener('change',async e=>{const t=e.target;
- if(t.id=='fcam'||t.id=='fimp'){for(const fl of [...t.files])await pput({id:Date.now()*100+(pn++%100),aid:A.id,cat:'',note:'',d:await rsz(fl),t:Date.now()});t.value='';ph();return}
+ if(t.id=='fcam'||t.id=='fimp'){const fs=[...t.files];let ok=0;toast('Ajout en cours…');for(const fl of fs){try{await pput({id:Date.now()*100+(pn++%100),aid:A.id,cat:'',note:'',d:await rsz(fl),t:Date.now()});ok++}catch(x){toast('Photo non ajoutée : '+((x&&x.message)||'erreur de stockage'))}}t.value='';ph();if(ok)toast(ok+' photo(s) ajoutée(s)'+(DB?'':' – stockage temporaire'));return}
  if(t.dataset.pc){const id=+t.closest('.pc').dataset.id,p=(await gall()).find(x=>x.id==id);if(p){p[t.dataset.pc]=t.value;await pput(p)}}});
 $$('.sec').forEach(s=>{const u=[...s.querySelectorAll(':scope>.g2>.sub')];if(u.length){const b=document.createElement('div');b.className='subt';b.innerHTML=u.map((x,j)=>`<button type="button" class="chip st" data-sb="${j}" aria-pressed="false">${E(x.dataset.n)}</button>`).join('');s.children[0].after(b)}});
 paint();go(0);
