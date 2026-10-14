@@ -54,24 +54,27 @@ input:focus,textarea:focus,select:focus,.chip:focus-visible,.btn:focus-visible,.
 h2{border-left:8px solid #00cccc;padding-left:12px}
 .dd{margin-bottom:16px}.dd summary{min-height:48px;padding:10px 14px;border:1.5px solid var(--ln);border-radius:10px;background:var(--sf);cursor:pointer;display:flex;gap:10px;flex-wrap:wrap;align-items:center}.dd summary em{color:var(--mu);font-style:normal;font-size:14px}.dd[open] summary{border-color:var(--ac)}.dd .chips{padding:12px 4px}
 .sg{display:block;width:100%;text-align:left;min-height:48px;padding:0 14px;border:0;border-bottom:1px solid var(--ln);background:var(--sf)}
+.pgd{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:14px}.pc{background:var(--sf);border:1px solid var(--ln);border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:8px}.pc img{width:100%;border-radius:8px}
 #rpt{display:none}
 @media print{@page{size:A4;margin:12mm}
 body.pr .app,body.pr dialog{display:none!important}
 body.pr{background:#fff}
-body.pr #rpt{display:block;font:10.5pt/1.35 "Avenir Next","Segoe UI",system-ui,sans-serif;color:#0b1045;background:#fff}
-#rpt *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.rh{display:flex;gap:16px;align-items:center}.rh img{width:130px;border-radius:6px}
-.rh h1{margin:0 0 4px;font-size:20pt;color:#0a14a8}.rh p{margin:2px 0;font-size:10pt;color:#5a5f86}.rh b{color:#0b1045;font-size:12pt}
-.rb{height:70px;border-radius:8px;margin:10px 0 6px;border:1px solid #d6d3ea}
-#rpt section{margin-bottom:10px}
-#rpt h2{font-size:13pt;color:#fff;background:#0a14a8;padding:5px 10px;border-radius:4px;border-left:8px solid #00cccc;margin:12px 0 0;break-after:avoid}
-#rpt table{width:100%;border-collapse:collapse}
-#rpt td{padding:4px 8px;border-bottom:1px solid #d6d3ea;vertical-align:top;font-size:9.5pt}
-#rpt td:first-child{width:38%;font-weight:600;background:#f4f2fb}
-#rpt tr{break-inside:avoid}
-#rpt td.sh{background:#fff!important;color:#0a14a8;font-weight:700;border-bottom:1.5px solid #00cccc;padding-top:10px}
-#rpt td.tt{background:#fff!important;border:2px solid #ff5200;font-weight:700;font-size:11pt}
-.rf{margin-top:18px;text-align:center;break-inside:avoid}.rf img{max-width:100%}.rm{font-size:8pt;color:#5a5f86;text-align:center}}
+body.pr #rpt{display:block;font:10pt/1.4 "Avenir Next","Segoe UI",system-ui,sans-serif;color:#0b1045;background:#fff}
+#rpt *{-webkit-print-color-adjust:exact;print-color-adjust:exact;box-sizing:border-box}
+.cv{min-height:268mm;display:flex;flex-direction:column;break-after:page}.cl{width:200px;border-radius:8px}
+.ct{margin:36px 0 16px}.ct small{letter-spacing:.2em;color:#ff5200;font-weight:700}.ct h1{font-size:34pt;margin:6px 0;color:#0a14a8}.ct h2{font-size:20pt;margin:0 0 8px;border:0;padding:0}.ct p{margin:2px 0;color:#5a5f86;font-size:11pt}
+.rb{height:230px;border-radius:12px;border:1px solid #d6d3ea;margin:10px 0}
+.kp{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:18px 0}.kp div{border:1.5px solid #00cccc;border-radius:10px;padding:10px;text-align:center}.kp b{display:block;font-size:12pt;color:#0a14a8}.kp span{font-size:8pt;color:#5a5f86}
+.cf{margin-top:auto;width:100%;background:#fff}
+#rpt section{margin-bottom:12px}
+#rpt h2{display:flex;align-items:center;gap:10px;font-size:14pt;color:#0a14a8;border:0;border-bottom:2.5px solid #00cccc;padding:0 0 6px;margin:16px 0 6px;break-after:avoid}
+.ic{width:32px;height:32px;border-radius:50%;background:#0a14a8;display:inline-flex;align-items:center;justify-content:center}.ic svg{width:19px;height:19px}
+#rpt table{width:100%;border-collapse:collapse}#rpt td{padding:5px 8px;border-bottom:1px solid #e3e0f2;vertical-align:top;font-size:9.5pt}
+#rpt tr:nth-child(even) td{background:#faf9fe}#rpt td:first-child{width:40%;font-weight:600}#rpt tr{break-inside:avoid}
+#rpt tr.tw td{background:#fff1ea!important}#rpt tr.tw td:last-child{color:#c43e00;font-weight:700}
+#rpt td.sh{background:#fff!important;color:#0a14a8;font-weight:700;border-bottom:1.5px solid #0a14a8;padding-top:12px}
+.pgr{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pgr figure{margin:0;break-inside:avoid}.pgr img{width:100%;border-radius:6px}.pgr figcaption{font-size:8.5pt;color:#5a5f86}
+.rm{font-size:8pt;color:#5a5f86;text-align:center}}
 dialog{width:min(760px,94vw);border:0;border-radius:14px;background:var(--sf);color:var(--ink);padding:18px}
 dialog::backdrop{background:rgba(0,0,0,.5)}
 dialog textarea{min-height:55vh;font:14px/1.45 ui-monospace,Menlo,monospace}
@@ -95,115 +98,53 @@ dialog textarea{min-height:55vh;font:14px/1.45 ui-monospace,Menlo,monospace}
 <div id="rpt"></div><dialog id="dg"><textarea id="tx" readonly></textarea>
  <div class="row" style="margin-top:12px;flex-wrap:wrap"><button class="btn" id="cp">Copier le texte</button><button class="btn pri" id="pr">Exporter en PDF</button><button class="btn" id="dt">Télécharger .txt</button><button class="btn" id="bk">Sauvegarde .json</button><button class="btn" id="rb">Restaurer</button><input type="file" id="rs" accept=".json" hidden><button class="btn" id="cl">Fermer</button></div></dialog>
 <script>
-const Y=['Oui','Non'],SO=['Oui','Non','Sans objet'];
-const f=(k,l,t,o,x)=>({k,l,t,o,...x}),I=(k,v)=>({if:[k,v]}),h=(l,x)=>f('','l'.length?l:'','h',0,x);
-const com=f('com','Commentaires','a');
+const Y=['Oui','Non'],ST=['Bon','Moyen','Dégradé'],U='n';
+const f=(k,l,t,o,x)=>({k,l,t,o,...x}),I=(k,v)=>({if:[k,v]}),h=(l,x)=>f('',l,'h',0,x),g=(i,fs)=>({t:'g',if:i,f:fs});
+const com=f('com','Observations','a');
 const EN=[['el','Électricité'],['ga','Gaz naturel'],['fo','FOD (fioul)'],['bo','Bois / granulés'],['rc','Réseau de chaleur'],['au','Autre énergie']];
-const ISO=['Laine de verre','Laine de roche','Laine de bois','Ouate de cellulose','Chanvre / lin','Liège','PSE (polystyrène expansé)','XPS','Polyuréthane / PIR','Verre cellulaire','Isolant mince réfléchissant','Autre'],ST=['Bon','Moyen','Dégradé'];
-const PR=[['pb','Plancher bas',['Isolation en sous-face (cave / vide sanitaire)','Isolation par le dessus','Isolation sous chape','Flocage','Traitement de l’humidité']],
-['mu','Murs extérieurs',['Isolation par l’extérieur (ITE)','Isolation par l’intérieur (ITI)','Injection / remplissage','Bardage','Enduit / ravalement']],
-['pl','Plafond / combles perdus',['Soufflage de combles perdus','Rouleaux / panneaux','Faux plafond isolé','Plancher de combles aménageables']],
-['to','Toiture',['Isolation sous rampants','Sarking (par l’extérieur)','Toiture-terrasse (étanchéité + isolant)','Isolation entre chevrons','Réfection de la couverture']],
-['me','Menuiseries',['Remplacement des fenêtres','Remplacement des portes-fenêtres','Survitrage / double fenêtre','Changement des vitrages seuls','Remplacement des joints','Volets / occultations','Entrées d’air']],
-['po','Portes extérieures',['Remplacement des portes','Joints / seuils','Sas d’entrée']],
-['pt','Ponts thermiques',['Nez de dalle','Tableaux / linteaux','Coffres de volets roulants','Refends']]];
-const EM=[['ra','Radiateurs à eau – acier'],['rf','Radiateurs à eau – fonte'],['rl','Radiateurs à eau – aluminium'],['co','Convecteurs électriques'],['pr','Panneaux rayonnants / radiants IR'],['ri','Radiateurs à inertie'],['pc','Plancher chauffant'],['pp','Plafond chauffant rayonnant'],['ae','Aérothermes'],['vc','Ventilo-convecteurs'],['tr','Tubes radiants gaz'],['ct','CTA – batterie chaude']];
 const TC=['Chaudière électrique','Chaudière fioul','Chaudière gaz','Chaudière bois','Chaudière charbon','Chaudière PAC','Réseau de chaleur','Chauffage électrique direct','Chauffage fioul','Chauffage gaz','Chauffage bois','Chauffage charbon','Chauffage PAC'];
 const GEN=['Chaudière classique avant 1980','Chaudière classique entre 1981 et 1985','Chaudière classique entre 1986 et 1990','Chaudière standard entre 1991 et 1993','Chaudière standard entre 1994 et 2000','Chaudière standard depuis 2001','Chaudière basse température entre 1991 et 2000','Chaudière basse température depuis 2001','Chaudière condensation entre 1981 et 1985','Chaudière condensation entre 1986 et 2000','Chaudière condensation depuis 2001','Générateur d’air chaud avant 2006','Générateur d’air chaud après 2006 standard','Générateur d’air chaud après 2006 à condensation','Radiateur gaz avant 2006 avec ou sans ventilateur','Radiateur gaz après 2006 avec ou sans ventilateur','Cogénération entre 1981 et 1985','Cogénération entre 1986 et 2000','Cogénération depuis 2001'];
 const VENT=['Ventilation par ouverture des fenêtres','Ventilation par entrées d’air hautes et basses','VMC SF auto réglable avant 82','VMC SF auto réglable après 82','VMC SF à extraction Hygro (Hygro A)','VMC Hygro Gaz','VMC Hygro à extraction et entrées d’air hygro (Hygro B)','VMC Double Flux avec échangeur','VMC Double Flux sans échangeur','Ventilation naturelle par conduit','Ventilation hybride','Mécanique sur conduit existant','Ventilation naturelle par conduit avec entrées d’air hygro','Ventilation hybride avec entrées d’air hygro','Puits climatique (canadien ou provençal)'];
-const EM2=['Radiateur HT sans robinet therm.','Radiateur HT avec robinet therm.','Radiateur BT sans robinet therm.','Radiateur BT avec robinet therm.','Plancher chauffant','Soufflage air chaud','Convecteur','Plafond chauffant','Autres équipements','Convecteur électrique ancien','Convecteur électrique NF catégorie C','Panneau rayonnant ancien','Panneau rayonnant électrique NF catégorie C','Radiateur électrique ancien','Radiateur électrique NF catégorie C','Plancher rayonnant électrique sans régulation','Plafond rayonnant électrique sans régulation','Radiateur électrique accumulation','Plancher électrique accumulation','Convecteurs bi-jonction','Soufflage air chaud (électrique)','Autre émetteur à effet joule'].map((n,i)=>['e'+i,n]);
-const LT={mu:['Mur extérieur','Mur sur local non chauffé','Mur enterré','Mur sur bât. autre que d’habitation','Mur mitoyen'],pb:['Sur terre-plein','Sur vide-sanitaire','Sur local non chauffé','Sur local autre que d’habitation','Sur l’extérieur','Mitoyen'],pl:['Terrasse','Combles aménagés','Sur local non chauffé (combles perdus…)','Sur local autre que d’habitation','Mitoyen']};LT.to=LT.pl;
+const EM=['Radiateur HT sans robinet therm.','Radiateur HT avec robinet therm.','Radiateur BT sans robinet therm.','Radiateur BT avec robinet therm.','Plancher chauffant','Soufflage air chaud','Convecteur','Plafond chauffant','Autres équipements','Convecteur électrique ancien','Convecteur électrique NF catégorie C','Panneau rayonnant ancien','Panneau rayonnant électrique NF catégorie C','Radiateur électrique ancien','Radiateur électrique NF catégorie C','Plancher rayonnant électrique sans régulation','Plafond rayonnant électrique sans régulation','Radiateur électrique accumulation','Plancher électrique accumulation','Convecteurs bi-jonction','Soufflage air chaud (électrique)','Autre émetteur à effet joule'];
+const RG=['Haute température (> 65 °C)','Basse température (< 65 °C)','Variable / loi d’eau'],DS=['Monotube','Bitube','Aéraulique (air soufflé)','Boucles (plancher / plafond)','Électrique (sans réseau)','Autre'];
+const LT={mu:['Mur extérieur','Mur sur local non chauffé','Mur enterré','Mur sur bât. autre que d’habitation','Mur mitoyen'],pb:['Sur terre-plein','Sur vide-sanitaire','Sur local non chauffé','Sur local autre que d’habitation','Sur l’extérieur','Mitoyen'],pl:['Terrasse','Combles aménagés','Sur local non chauffé (combles perdus…)','Sur local autre que d’habitation','Mitoyen']};
 const OR=['25° ≤ Nord < 75°','25° ≤ Nord-Est < 75°','25° ≤ Est < 75°','25° ≤ Sud-Est < 75°','25° ≤ Sud < 75°','25° ≤ Sud-Ouest < 75°','25° ≤ Ouest < 75°','25° ≤ Nord-Ouest < 75°','Intérieur','Horizontale','Sud < 25°','Ouest < 25°','Est < 25°','Nord < 25°'];
-const LX=(c,q)=>[...(LT[c]?[f(c+'_ty','Type de paroi','r',LT[c],q)]:[]),...(['mu','pb','pl'].includes(c)?[f(c+'_lp','Position de la paroi sur le LNC (schéma 1 à 8, INT / EXT)','r',['1','2','3','4','5','6','7','8'],q),f(c+'_si','S int (LNC)','n',0,{u:'m²',...q}),f(c+'_se','S ext (LNC) – à saisir si S ext < 25 % de S int','n',0,{u:'m²',...q})]:[]),...(c=='pl'||c=='to'?[f(c+'_or','Orientation / inclinaison','r',OR,q)]:[])];
-const RG=['Haute température (> 65 °C)','Basse température (< 65 °C)','Température variable / loi d’eau'],DS=['Monotube','Bitube','Aéraulique (air soufflé)','Boucles (plancher / plafond)','Électrique (sans réseau)','Autre'];
-const ZF=[f('mur','Murs (type, isolation, état)','x'),f('toit','Toiture','x'),h('Menuiseries'),
-f('vit','Vitrage','r',['Simple','Double','Triple']),f('car','Caractéristiques du vitrage','x'),
-f('mat','Matériau','r',['PVC','ALU','Bois','Mixte']),f('dat','Date d’installation','x'),
-f('joi','État des joints','r',['Bon état','Vétuste']),f('eq','Équipements','c',['Entrée d’air','Hygro','Rien']),
-f('sol','Sol','x'),f('vent','Ventilation (type, état)','x')];
+const IS=['Non isolé','Isolé < 5 cm','Isolé 5–10 cm','Isolé > 10 cm','Inconnu'],M2=['su','Surface',U,'m²'],EE=['et','État',ST];
+const PR=[
+['pb','Plancher bas',[['ty','Donne sur',LT.pb],['st','Structure',['Dalle béton','Plancher bois','Hourdis','Pierre / voûtains']],['is','Isolation',IS],M2,EE,['tw','Travaux à prévoir',['Aucun','Isolation sous-face','Isolation par le dessus','Isolation sous chape']]]],
+['mu','Murs',[['ty','Donne sur',LT.mu],['st','Structure',['Béton','Brique pleine','Brique creuse','Parpaing','Pierre','Ossature bois']],['is','Isolation',IS],M2,EE,['tw','Travaux à prévoir',['Aucun','ITE','ITI','Injection / remplissage','Ravalement']]]],
+['pl','Plafond / combles',[['ty','Donne sur',LT.pl],['is','Isolation',IS],M2,EE,['tw','Travaux à prévoir',['Aucun','Soufflage combles perdus','Isolation sous rampants','Faux plafond isolé']]]],
+['to','Toiture',[['ty','Couverture',['Tuiles','Ardoises','Bac acier','Toiture-terrasse','Zinc','Autre']],['or','Orientation / pente',OR],['is','Isolation',IS],M2,EE,['tw','Travaux à prévoir',['Aucun','Sarking (par l’extérieur)','Isolation toiture-terrasse','Réfection couverture']]]],
+['me','Menuiseries',[['vi','Vitrage',['Simple','Double ancien','Double récent','Triple']],['ma','Matériau',['PVC','Alu','Bois','Mixte']],['oc','Occultation',['Aucune','Volets battants','Volets roulants','Persiennes','Stores']],['su','Surface vitrée',U,'m²'],EE,['tw','Travaux à prévoir',['Aucun','Remplacement','Survitrage','Joints / réglages','Ajout de volets']]]],
+['po','Portes extérieures',[['ma','Matériau',['Bois','PVC','Alu','Acier']],['vi','Type',['Pleine','Vitrée simple','Vitrée double']],['su','Nombre',U,'u.'],EE,['tw','Travaux à prévoir',['Aucun','Remplacement','Joints / seuils']]]]];
+const PI=(c,n,sp,i)=>sp.map(([k,l,o,u])=>{const t=o==U;return f(c+i+'_'+k,l+(i>1?' ('+i+')':''),t?'n':'r',t?0:o,{...(t?{u}:{}),...(k=='tw'?{tw:1,sl:n+(i>1?' ('+i+')':'')}:{})})});
 const S=[
-{id:'d',t:'Descriptif',f:[
-f('nom','Nom du bâtiment','x'),f('adr','Adresse (n° et voie)','ad'),f('cp','Code postal','x'),f('vil','Ville','x'),f('insee','Code INSEE commune','x'),f('parc','Code parcelle (IDU cadastre)','x'),f('sec','Section et numéro','x'),f('cont','Surface cadastrale','n',0,{u:'m²'}),f('sime','Code outil SIME','x'),
-f('pdl','N° de PDL associé','x'),f('kva','Puissance','n',0,{u:'kVA'}),f('pce','N° de PCE associé','x'),
+{id:'d',t:'Bâtiment',f:[f('nom','Nom du bâtiment','x'),f('adr','Adresse (n° et voie)','ad'),f('cp','Code postal','x'),f('vil','Ville','x'),f('insee','Code INSEE','x'),f('parc','Code parcelle (IDU)','x'),f('pdl','N° de PDL','x'),f('pce','N° de PCE','x'),
 f('usage','Usage(s)','c',['Administratif','Scolaire','Socio-culturel','Sportif','Restauration','Habitation','Santé','Autre']),
-f('usa','Autre usage, précisez','x',0,I('usage','Autre')),
-f('cons','Année de construction','n'),f('reh','Année de réhabilitation','n'),
-f('freq','Périodes de fréquentation (hebdomadaire et annuelle)','a'),f('occ','Types et nombre d’occupants','a'),
-f('erp','ERP ?','r',Y),f('erpc','Catégorie / type ERP','x',0,I('erp','Oui')),
-f('sc','Surface chauffée','n',0,{u:'m²'}),f('st','Surface totale','n',0,{u:'m²'}),
-f('hsp','Hauteur sous-plafond','n',0,{u:'m'}),f('expo','Exposition','x'),
-f('diag','Diagnostic thermique existant','r',Y),f('fac','Factures disponibles','r',Y),
-f('fact','Type de factures','c',['GC-G','GC-E'],I('fac','Oui'))]},
-{id:'p',t:'Projet',f:[f('mot','Motivation du projet ou problématique','a'),
-f('act','Actions envisagées','c',['Isolation','Ventilation','EnR','Changer de chauffage','Climatisation','Changer l’ECS','Améliorer le système de chauffage / d’ECS','Menuiseries'])]},
+f('per','Période de construction','r',['Avant 1948','1948–1974','1975–1989','1990–2005','2006–2012','Après 2012']),
+f('sc','Surface chauffée','n',0,{u:'m²'}),f('nv','Nombre de niveaux','r',['1','2','3','4','5 et +']),
+f('oc','Occupation','r',['Permanente','Heures de bureau','Scolaire','Ponctuelle']),f('hr','Heures d’occupation','n',0,{u:'h'}),f('hp','Heures comptées','r',['Par jour','Par semaine','Par mois']),f('erp','ERP','r',['Non','Oui'])]},
 {id:'v',t:'Enveloppe',f:[f('vp','Parties de l’enveloppe à traiter','c',PR.map(p=>p[1])),
-...PR.flatMap(([c,n,w])=>{const q=I('vp',n);return[h(n,q),...LX(c,q),f(c+'_d','Description / composition existante','x',0,q),f(c+'_s','Surface','n',0,{u:'m²',...q}),f(c+'_e','État','r',ST,q),f(c+'_i','Isolation existante','r',['Aucune','Insuffisante','Correcte'],q),f(c+'_it','Isolant existant','c',ISO,q),f(c+'_ie','Épaisseur existante','n',0,{u:'cm',...q}),
-...(c=='me'?[f('me_v','Vitrage','r',['Simple','Double','Triple'],q),f('me_m','Matériau','r',['PVC','ALU','Bois','Mixte'],q),f('me_da','Date d’installation','x',0,q),f('me_j','État des joints','r',['Bon état','Vétuste'],q)]:[]),
-f(c+'_w','Travaux à prévoir','c',w,q),
-...(c=='me'||c=='po'?[]:[f(c+'_p','Isolant envisagé','c',ISO,q),f(c+'_pe','Épaisseur envisagée','n',0,{u:'cm',...q}),f(c+'_r','Résistance thermique visée (R)','n',0,{u:'m².K/W',...q})]),
-f(c+'_c','Commentaires','a',0,q)]}),com]},
-{id:'w',t:'Ventilation',f:[
-f('vt','Type de ventilation','c',VENT),
-f('vz','Locaux concernés','c',['Salles de classe / bureaux','Sanitaires','Cuisine / restauration','Salles de sport','Salles polyvalentes','Vestiaires','Locaux techniques','Ensemble du bâtiment']),
-f('vm','Marque et modèle','x'),f('vw','Puissance électrique','n',0,{u:'kW'}),f('vq','Débit nominal','n',0,{u:'m³/h'}),f('vn','Nombre de caissons / extracteurs','n'),f('vb','Nombre de bouches / grilles','n'),f('va','Année d’installation','n'),
-f('ve','État','r',ST),f('vh','Horaires de fonctionnement','x'),
-f('vr','Régulation','c',['Aucune','Programmation horaire','Sonde CO₂','Détection de présence','Hygroréglable','GTB']),
-f('vy','Rendement de l’échangeur','n',0,{u:'%',...I('vt','VMC Double Flux avec échangeur')}),
-f('vf','État des filtres','r',['Propres','Encrassés','Absents']),f('vx','Entretien','r',['Contrat','Ponctuel','Aucun']),
-f('vo','Observations','c',['Odeurs','Condensation / moisissures','Bruit','Courants d’air','Manque d’air','RAS']),
-f('vtr','Travaux à prévoir','c',['VMC simple flux','VMC hygro','Passage en double flux','Remplacement du caisson','Remplacement des bouches / grilles','Ajout d’entrées d’air','Nettoyage des gaines','Calorifugeage des conduits','Régulation / programmation','Remplacement des filtres','Création du réseau']),com]},
-{id:'l',t:'Éclairage',f:[f('lamp','Types de lampes (cocher, nombre, emplacement)','l',[['Lampes à incandescence','inc'],['Lampes basse consommation','bc'],['Tubes fluorescents','tf'],['LED','led']]),
-f('san','Sanitaires','c',['Interrupteur','Minuteur','Capteurs de mouvement']),f('cou','Couloirs','c',['Interrupteur','Minuteur','Capteurs de mouvement']),com]},
-{id:'c',t:'Chauffage & clim',f:[
-h('Énergie et production'),
-f('en','Énergie','c',['Électricité','PAC','FOD','Gaz naturel','Bois']),
-f('pact','Type de PAC','x',0,I('en','PAC')),f('pacr','PAC réversible','r',Y,I('en','PAC')),f('bois','Type de bois','x',0,I('en','Bois')),
-f('tc','Type de chauffage','c',TC),f('gen','Type de générateur','r',GEN),f('prod','Production','c',['Chauffage','ECS + chauffage','Froid']),
-h('Chauffage électrique'),f('el','Chauffage électrique ?','r',Y),
-f('elr','Type de radiateurs','c',['Convecteurs','Radiants IR','Inertie','Plancher','Plafond','Aérotherme'],I('el','Oui')),
-f('elm','Marque et modèle','x',0,I('el','Oui')),f('ela','Année d’installation','n',0,I('el','Oui')),f('eln','Nombre d’émetteurs','n',0,I('el','Oui')),f('elw','Puissance totale installée','n',0,{u:'kW',...I('el','Oui')}),f('ele','État des émetteurs','r',['Bon','Moyen','Vétuste'],I('el','Oui')),f('eld','Détail par local (type, nombre, puissance)','a',0,I('el','Oui')),
-f('elg','Minuterie / programmation','c',['Journalière','Hebdomadaire','Annuelle','GTB','Application smartphone','Inexistante'],I('el','Oui')),
-f('elz','Répartition par zones','r',['Judicieuse','À revoir'],I('el','Oui')),
-h('Chauffage central'),f('cen','Chauffage central ?','r',Y),
-f('chm','Marque et modèle de la chaudière','x',0,I('cen','Oui')),f('chp','Puissance nominale de la chaudière','n',0,{u:'kW',...I('cen','Oui')}),f('chn','Nombre de chaudières','n',0,I('cen','Oui')),f('cht','Type de chaudière','c',['Standard','Basse température','Condensation','Bois / granulés','Autre'],I('cen','Oui')),f('chc','Énergie de la chaudière','c',['Gaz naturel','FOD','Bois','Granulés','Électricité','Autre'],I('cen','Oui')),f('chs','État général de la chaudière','r',['Bon','Moyen','Vétuste'],I('cen','Oui')),f('cw','Travaux à prévoir sur la production','c',['Remplacement de la chaudière','Chaudière à condensation','PAC air/eau','PAC air/air','Chaudière biomasse','Raccordement réseau de chaleur','Réglages / optimisation','Entretien'],I('cen','Oui')),f('chr','Rendement / classe énergétique (si connu)','x',0,I('cen','Oui')),
-f('cha','Année de fabrication (installation)','n',0,I('cen','Oui')),f('chb','Année du brûleur','n',0,I('cen','Oui')),
-f('liv','Livret de chaufferie','r',Y,I('cen','Oui')),f('att','Attestation d’entretien','r',Y,I('cen','Oui')),
-f('ctl','Date du dernier contrôle','x',0,I('cen','Oui')),f('rep','Dernière(s) réparation(s) (date et description)','a',0,I('cen','Oui')),
-f('emi','Mode d’émission','c',['Radiateurs à eau','Plancher chauffant','Plafond chauffant','Tubes radiants à gaz','Aérotherme','Ventilo-convecteurs','CTA / batterie chaude'],I('cen','Oui')),
-f('mat','Matériau des radiateurs','c',['Acier','Fonte','Acier galva','Alu acier','Autre'],I('emi','Radiateurs à eau')),
-f('mon','Distribution','r',['Monotube','Bitube'],I('emi','Radiateurs à eau')),f('emn','Nombre d’émetteurs','n',0,I('cen','Oui')),f('emp','Puissance totale des émetteurs','n',0,{u:'kW',...I('cen','Oui')}),f('emr','Régime de température','r',['Haute (≥ 70 °C)','Moyenne','Basse (≤ 45 °C)'],I('cen','Oui')),f('eme','État des émetteurs','r',['Bon','Moyen','Vétuste'],I('cen','Oui')),f('emo','Observations','c',['Embouage','Purge difficile','Fuites','RAS'],I('cen','Oui')),f('emd','Détail des émetteurs par zone ou local (type, nombre, puissance)','a',0,I('cen','Oui')),
-f('cs','Température de consigne','n',0,{u:'°C',...I('cen','Oui')}),
-f('cal','Calorifugeage du réseau en partie non chauffée','r',Y,I('cen','Oui')),
-f('rt','Type de régulation','c',['Électronique','Électromécanique','En ambiance','Par émetteurs','Robinet(s) thermostatique(s)'],I('cen','Oui')),
-f('rob','Robinets thermostatiques','r',Y,I('cen','Oui')),f('nrob','Nombre de robinets','n',0,I('rob','Oui')),
-f('prg','Programmation','r',Y,I('cen','Oui')),f('prt','Type de programmation','x',0,I('prg','Oui')),f('prd','Détail de la programmation','a',0,I('prg','Oui')),
-f('pre','Présence de','c',['Vanne trois voies','Circulateur','Sonde de température extérieure','Pot à boue / désemboueur','Régulation (supervision)'],I('cen','Oui')),
-f('v3','Vanne 3 voies : nom, marque, modèle','x',0,I('pre','Vanne trois voies')),f('cir','Circulateur : nom, marque, modèle','x',0,I('pre','Circulateur')),
-f('td','Température départ','n',0,{u:'°C',...I('cen','Oui')}),f('tr','Température retour','n',0,{u:'°C',...I('cen','Oui')}),
-f('aut','Autres éléments importants','a',0,I('cen','Oui')),
-h('Climatisation'),f('cl','Climatisation ?','r',Y),
-f('clm','Nom, marque, modèle','x',0,I('cl','Oui')),f('clp','Puissance froid','n',0,{u:'kW',...I('cl','Oui')}),f('clt','Type de système','c',['Split','Multi-split','VRV / VRF','Groupe froid / CTA','Monobloc'],I('cl','Oui')),f('cln','Nombre et emplacement','x',0,I('cl','Oui')),f('cla','Année de fabrication (installation)','n',0,I('cl','Oui')),
-h('Chauffage / climatisation d’appoint'),f('ap','Chauffage d’appoint présent','r',Y),
-f('apt','Type','x',0,I('ap','Oui')),f('apc','Combustible','x',0,I('ap','Oui')),f('apn','Nombre','n',0,I('ap','Oui')),f('app','Puissance','n',0,{u:'kW',...I('ap','Oui')}),
-f('ca','Climatisation d’appoint présente','r',Y),f('cat','Type','x',0,I('ca','Oui')),com]},
-{id:'m',t:'Émetteurs',f:[h('Réseau de distribution'),f('mrg','Régime de température du réseau d’eau chaude','s',RG),f('mds','Type de distribution','s',DS),f('mtd','Température de départ','n',0,{u:'°C'}),f('mtr','Température de retour','n',0,{u:'°C'}),f('mcal','Calorifugeage du réseau','r',SO),h('Émetteurs présents'),f('mt','Types d’émetteurs présents','c',EM2.map(e=>e[1])),
-...EM2.flatMap(([c,n])=>{const q=I('mt',n);return[h(n,q),f(c+'_n','Nombre','n',0,q),f(c+'_pu','Puissance unitaire','n',0,{u:'W',...q}),f(c+'_p','Puissance totale','n',0,{u:'kW',...q}),f(c+'_rg','Régime de température','s',RG,q),f(c+'_ds','Distribution','s',DS,q),f(c+'_mq','Marque / modèle','x',0,q),f(c+'_a','Année d’installation','n',0,q),f(c+'_e','État','r',ST,q),f(c+'_r','Régulation','c',['Robinet thermostatique','Thermostat d’ambiance','Programmateur','GTB','Aucune'],q),f(c+'_l','Locaux desservis','x',0,q),f(c+'_w','Travaux à prévoir','c',['Remplacement','Désembouage / équilibrage','Robinets thermostatiques','Régulation / programmation','Calorifugeage des réseaux','Aucun'],q)]}),com]},
-{id:'e',t:'ECS',f:[
-f('prod','Production','c',['Pas de ballon','Ballon électrique','Ballon instantané','Ballon thermodynamique','Chauffe-eau solaire','Ballon gaz','Chaudière/PAC instantanée','Chaudière/PAC avec ballon d’accumulation']),
-h('Production d’ECS'),f('ene','Énergie utilisée','c',['Électricité','Gaz naturel','FOD','Bois','Solaire','Réseau de chaleur']),f('pw','Puissance de production ECS','n',0,{u:'kW'}),f('pa','Année d’installation','n'),f('pe','État','r',['Bon','Moyen','Vétuste']),f('pb','Bouclage ECS','r',Y),f('pbt','Température de bouclage','n',0,{u:'°C',...I('pb','Oui')}),f('pu','Usages','c',['Sanitaires','Douches','Cuisine / restauration','Autre']),h('Ballon'),f('bt','Type de ballon','c',['Vertical','Horizontal','Mural','Accumulation','Semi-instantané']),f('nb','Nombre','n'),f('bw','Puissance de la résistance électrique','n',0,{u:'kW'}),f('vol','Volume','n',0,{u:'litres'}),f('mq','Marque(s) / modèle(s)','x'),
-f('jn','Contacteur jour/nuit','r',Y),f('mel','Présence d’un mélangeur','r',Y),
-f('cs','Température de consigne','n',0,{u:'°C'}),f('ts','Température de sortie','n',0,{u:'°C'}),
-f('vc','Ballon dans le volume chauffé','r',SO),f('cb','Calorifugeage du ballon','r',SO,I('vc','Non')),
-f('cr','Calorifugeage du réseau de distribution','r',SO),f('ew','Travaux à prévoir','c',['Remplacement du ballon','Ballon thermodynamique','Chauffe-eau solaire','Calorifugeage ballon / réseau','Réduction de la température de consigne','Mitigeurs / économiseurs d’eau','Suppression du bouclage'],{}),com]},
-{id:'r',t:'Consommations',f:[f('ener','Énergies utilisées par le bâtiment','c',EN.map(e=>e[1])),
-...EN.flatMap(([c,n])=>[h(n,I('ener',n)),f(c+'_an','Année / période de référence','x',0,I('ener',n)),f(c+'_kwh','Consommation annuelle','n',0,{u:'kWh',...I('ener',n)}),f(c+'_eur','Coût annuel TTC','n',0,{u:'€',...I('ener',n)}),f(c+'_ab','Dont abonnement','n',0,{u:'€/an',...I('ener',n)}),f(c+'_qt','Quantité facturée (litres, stères, tonnes, m³…)','x',0,I('ener',n)),f(c+'_usg','Usages couverts','c',['Chauffage','ECS','Éclairage','Climatisation','Autres usages'],I('ener',n))]),
-f('tot','','t'),h('Remarques'),f('us','Usages','a'),f('af','Besoin d’affiches','r',Y),f('afq','Lesquelles ?','x',0,I('af','Oui')),f('eqe','Équipements électriques consommateurs','a')]}
+...PR.map(([c,n,sp])=>g(I('vp',n).if,[h(n),...PI(c,n,sp,1),f(c+'_nb','Nombre de types différents','r',['1','2','3']),g([c+'_nb','2;3'],[h(n+' – type 2'),...PI(c,n,sp,2)]),g([c+'_nb','3'],[h(n+' – type 3'),...PI(c,n,sp,3)])])),com]},
+{id:'c',t:'Chauffage & clim',f:[f('tc','Type de chauffage','c',TC),f('gen','Type de générateur','r',GEN),f('gp','Puissance du générateur','n',0,{u:'kW'}),f('ge','État du générateur','r',ST),
+h('Émetteurs et distribution'),f('em','Types d’émetteurs','c',EM),f('ne','Nombre d’émetteurs','n'),f('ep','Puissance installée des émetteurs','n',0,{u:'kW'}),f('rg','Régime de température','r',RG),f('ds','Distribution','r',DS),
+f('rt','Régulation','c',['Robinets thermostatiques','Thermostat d’ambiance','Programmation horaire','Aucune']),f('ee','État des émetteurs','r',ST),
+h('Climatisation'),f('cl','Climatisation','r',['Aucune','Split','Multi-split','VRV / VRF','Groupe froid / CTA']),f('clp','Puissance froid','n',0,{u:'kW',...I('cl','Split;Multi-split;VRV / VRF;Groupe froid / CTA')}),
+f('tw','Travaux à prévoir','c',['Remplacement du générateur','PAC air/eau','Chaudière biomasse','Raccordement réseau de chaleur','Désembouage / équilibrage','Robinets thermostatiques','Régulation / programmation','Calorifugeage des réseaux','Remplacement des émetteurs'],{tw:1,sl:'Chauffage'}),com]},
+{id:'e',t:'ECS',f:[f('pr','Type de production','r',['Ballon électrique','Chaudière + ballon','Ballon thermodynamique','Chauffe-eau solaire','Ballon gaz','Instantané gaz','Instantané électrique','Aucune']),f('en','Énergie','r',['Électricité','Gaz naturel','Fioul','Bois','Solaire','Réseau de chaleur']),f('vo','Volume du ballon','n',0,{u:'L'}),f('pw','Puissance','n',0,{u:'kW'}),f('an','Année d’installation','n'),f('bo','Bouclage','r',Y),f('et','État','r',ST),
+f('tw','Travaux à prévoir','r',['Aucun','Remplacement du ballon','Ballon thermodynamique','Chauffe-eau solaire','Calorifugeage','Suppression du bouclage'],{tw:1,sl:'ECS'}),com]},
+{id:'w',t:'Ventilation',f:[f('vt','Type de ventilation','r',VENT),f('pw','Puissance électrique','n',0,{u:'W'}),f('et','État','r',['Fonctionne','Encrassée / bruyante','Hors service']),f('tw','Travaux à prévoir','r',['Aucun','Entretien / nettoyage','Remplacement du caisson','VMC simple flux','VMC hygro','Double flux','Entrées d’air'],{tw:1,sl:'Ventilation'}),com]},
+{id:'l',t:'Éclairage',f:[f('ty','Type de lampes','c',['Incandescence','Halogène','Fluocompacte','Tubes fluorescents','LED']),f('nb','Nombre de luminaires (estimation)','n'),f('co','Commande','c',['Interrupteur','Minuterie','Détecteur de présence','Gradation']),f('tw','Travaux à prévoir','r',['Aucun','Passage en LED','Détecteurs de présence','Gradation / pilotage'],{tw:1,sl:'Éclairage'})]},
+{id:'r',t:'Consommations',f:[f('ener','Énergies utilisées','c',EN.map(e=>e[1])),
+...EN.flatMap(([c,n])=>[h(n,I('ener',n)),f(c+'_an','Année de référence','r',['2025','2024','2023','2022'],I('ener',n)),f(c+'_kwh','Consommation annuelle','n',0,{u:'kWh',...I('ener',n)}),f(c+'_eur','Coût annuel TTC','n',0,{u:'€',...I('ener',n)})]),f('tot','','t')]},
+{id:'ph',t:'Photos',f:[f('ph','','ph')]}
 ];
 const E=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function fld(sid,x,pre='',lp=''){
  const ifa=x.if?` data-if="${E(sid+'_'+x.if[0]+'|'+x.if[1])}"`:'';
+ if(x.t=='g')return `<div class="g2 w"${ifa}>${x.f.map(y=>fld(sid,y)).join('')}</div>`;
  if(x.t=='h')return `<h3 class="w"${ifa}>${E(x.l)}</h3>`;
- const k=sid+'_'+pre+x.k,t=(x.t=='r'&&x.o.length>4)?'s':x.t,L=E(lp+x.l),lab=E(x.l+(x.u?' ('+x.u+')':''));let b,w='';
+ const k=sid+'_'+pre+x.k,t=(x.t=='r'&&x.o.length>4)?'s':x.t,L=E(lp+(x.sl||x.l)),lab=E(x.l+(x.u?' ('+x.u+')':''));let b,w='';
  if(t=='x'||t=='n')b=`<label><span>${lab}</span><input data-k="${k}"${t=='n'?' inputmode="decimal"':''}></label>`;
  else if(t=='a'){b=`<label><span>${lab}</span><textarea data-k="${k}"></textarea></label>`;w=' w'}
  else if(t=='s'){b=`<label><span>${lab}</span><select data-k="${k}"><option value=""></option>${x.o.map(o=>`<option>${E(o)}</option>`).join('')}</select></label>`}
@@ -211,8 +152,9 @@ function fld(sid,x,pre='',lp=''){
  else if(t=='c'||t=='r'){w=' w';const ch=x.o.map(o=>`<button type="button" class="chip" data-k="${k}" data-v="${E(o)}" data-m="${t}" aria-pressed="false">${E(o)}</button>`).join('');b=(t=='c'&&x.o.length>7)?`<details class="dd" data-kk="${k}"><summary><b>${lab}</b><em></em></summary><div class="chips">${ch}</div></details>`:`<span>${lab}</span><div class="chips">${ch}</div>`}
  else if(t=='l'){w=' w';b=`<span>${lab}</span>`+x.o.map(([n,c])=>`<div class="lrow"><button type="button" class="chip" data-k="${k}_${c}" data-m="b" aria-pressed="false">${E(n)}</button><input data-k="${k}_${c}_nb" inputmode="numeric" placeholder="Nb"><input data-k="${k}_${c}_loc" placeholder="Emplacement"></div>`).join('')}
  else if(t=='t'){w=' w';b='<div id="tot"></div>'}
+ else if(t=='ph'){w=' w';b='<div class="row"><button type="button" class="btn pri" id="cam">Prendre une photo</button><button type="button" class="btn" id="imp">Importer</button></div><input type="file" id="fcam" accept="image/*" capture="environment" hidden><input type="file" id="fimp" accept="image/*" multiple hidden><div id="pg" class="pgd"></div>'}
  else if(t=='z'){w=' w';b=`<div class="zt">${[1,2,3].map(z=>`<button type="button" class="chip" data-z="${z}" aria-pressed="${z==1}">Zone ${z}</button>`).join('')}</div>`+[1,2,3].map(z=>`<div class="zp${z==1?' on':''}" data-zp="${z}"><div class="g2">${ZF.map(y=>fld(sid,y,'z'+z+'_','Zone '+z+' – ')).join('')}</div></div>`).join('')}
- return `<div class="f${w}" data-key="${k}" data-l="${L}" data-t="${t}"${ifa}>${b}</div>`}
+ return `<div class="f${w}" data-key="${k}" data-l="${L}" data-t="${t}"${x.tw?' data-tw="1"':''}${ifa}>${b}</div>`}
 document.getElementById('nav').innerHTML=S.map((s,i)=>`<button class="nv" data-s="${i}">${s.t}</button>`).join('');
 document.getElementById('secs').innerHTML=S.map(s=>`<section class="sec"><h2>${s.t}</h2><div class="g2">${s.f.map(x=>fld(s.id,x)).join('')}</div></section>`).join('');
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
@@ -221,13 +163,13 @@ try{D=JSON.parse(localStorage.getItem('fa-fiches'))||D}catch(e){}
 const save=()=>{try{localStorage.setItem('fa-fiches',JSON.stringify(D))}catch(e){}};
 const mk=()=>{const a={id:Date.now(),v:{},t:Date.now()};D.l.push(a);D.c=a.id;A=a;save()};
 if(!D.l.length)mk();A=D.l.find(a=>a.id==D.c)||D.l[0];D.c=A.id;
-function ifs(){$$('[data-if]').forEach(e=>{const[k,v]=e.dataset.if.split('|'),x=A.v[k];e.hidden=!(Array.isArray(x)?x.includes(v):x==v)})}
+function ifs(){$$('[data-if]').forEach(e=>{const[k,v]=e.dataset.if.split('|'),x=A.v[k];{const vs=v.split(';');e.hidden=!(Array.isArray(x)?x.some(y=>vs.includes(y)):vs.includes(x))}})}
 function dots(){S.forEach((s,i)=>$$('.nv')[i].classList.toggle('has',Object.keys(A.v).some(k=>k.startsWith(s.id+'_')&&(Array.isArray(A.v[k])?A.v[k].length:A.v[k]))))}
 function head(){$('#ti').textContent=A.v.d_nom||'Nouvelle fiche';
  $('#fs').innerHTML=D.l.map(a=>`<option value="${a.id}"${a.id==A.id?' selected':''}>${E(a.v.d_nom||'Fiche sans nom')} – ${new Date(a.t).toLocaleDateString('fr-FR')}</option>`).join('')}
 function paint(){$$('[data-k]').forEach(e=>{const v=A.v[e.dataset.k];
  if(e.classList.contains('chip')){const d=e.dataset;e.setAttribute('aria-pressed',d.m=='b'?!!v:d.m=='c'?(v||[]).includes(d.v):v==d.v)}else e.value=v||''});
- dd();ifs();dots();head();tot()}
+ dd();ifs();dots();head();tot();ph()}
 function dd(){$$('details.dd').forEach(d=>{const v=A.v[d.dataset.kk]||[];d.querySelector('em').textContent=v.length?v.join(', '):'Aucune sélection'})}
 function tt(){let k=0,e=0;const n=s=>+String(s||0).replace(',','.')||0;
  EN.forEach(([c,m])=>{if((A.v.r_ener||[]).includes(m)){k+=n(A.v['r_'+c+'_kwh']);e+=n(A.v['r_'+c+'_eur'])}});
@@ -247,7 +189,7 @@ $('#fs').onchange=e=>{D.c=+e.target.value;A=D.l.find(a=>a.id==D.c);save();paint(
 $('#nw').onclick=()=>{mk();paint();go(0)};
 let ask;$('#dl').onclick=e=>{const b=e.target;
  if(!ask){ask=setTimeout(()=>{ask=0;b.textContent='Supprimer'},3000);b.textContent='Confirmer ?';return}
- clearTimeout(ask);ask=0;b.textContent='Supprimer';D.l=D.l.filter(a=>a.id!=A.id);if(!D.l.length)mk();A=D.l[0];D.c=A.id;save();paint();go(0)};
+ clearTimeout(ask);ask=0;b.textContent='Supprimer';gall(A.id).then(l=>l.forEach(p=>pdel(p.id)));D.l=D.l.filter(a=>a.id!=A.id);if(!D.l.length)mk();A=D.l[0];D.c=A.id;save();paint();go(0)};
 function sum(){let t=`FICHE DE VISITE – ${A.v.d_nom||''}\nDate : ${new Date(A.t).toLocaleDateString('fr-FR')}\n`;
  $$('.sec').forEach((s,i)=>{let r='';
   s.querySelectorAll('.f').forEach(w=>{if(w.closest('[hidden]'))return;const ty=w.dataset.t;
@@ -258,28 +200,36 @@ function sum(){let t=`FICHE DE VISITE – ${A.v.d_nom||''}\nDate : ${new Date(A.
   if(r)t+=`\n== ${S[i].t} ==\n${r}`});return t}
 $('#ex').onclick=()=>{$('#tx').value=sum();$('#dg').showModal()};
 $('#cl').onclick=()=>$('#dg').close();
-function rpt(){const v=A.v,d=new Date().toLocaleDateString('fr-FR'),bg=getComputedStyle($('.band')).backgroundImage;
- let o=`<div class="rh"><img src="${$('.lg').src}"><div><h1>Fiche de visite – Audit énergétique</h1><p><b>${E(v.d_nom||'')}</b></p><p>${E([v.d_adr,v.d_cp,v.d_vil].filter(Boolean).join(', '))}</p><p>Édité le ${d}${v.d_parc?' – Parcelle '+E(v.d_parc):''}</p></div></div><div class="rb" style='background:#f4f2fb ${bg} center bottom/auto 100% no-repeat'></div>`;
- $$('.sec').forEach((s,i)=>{let it=[];
+const IC={d:'<path d="M4 21V7l8-4 8 4v14M9 21v-6h6v6M8 10h2M14 10h2"/>',v:'<rect x="3" y="4" width="18" height="16"/><path d="M3 9h18M3 14h18M9 4v5M15 9v5M9 14v6"/>',w:'<circle cx="12" cy="12" r="2"/><path d="M12 10c0-4 1-6 3-6s2 3-1 5M14 12c4 0 6 1 6 3s-3 2-5-1M12 14c0 4-1 6-3 6s-2-3 1-5M10 12c-4 0-6-1-6-3s3-2 5 1"/>',c:'<path d="M12 3c1 4 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-9z"/>',e:'<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>',l:'<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10c1 1 1 2 1 3h6c0-1 0-2 1-3a6 6 0 0 0-4-10z"/>',r:'<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',ph:'<path d="M4 8h3l2-3h6l2 3h3v12H4z"/><circle cx="12" cy="14" r="4"/>',t:'<path d="M4 12l5 5L20 6"/>'};
+const ico=k=>`<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${IC[k]}</svg></span>`;
+async function rpt(){const v=A.v,d=new Date().toLocaleDateString('fr-FR'),bg=getComputedStyle($('.band')).backgroundImage,n=x=>+String(x||0).replace(',','.')||0;
+ let k=0,e=0;EN.forEach(([c,m])=>{if((v.r_ener||[]).includes(m)){k+=n(v['r_'+c+'_kwh']);e+=n(v['r_'+c+'_eur'])}});
+ const sc=n(v.d_sc),kp=[['Surface chauffée',sc?sc.toLocaleString('fr-FR')+' m²':'–'],['Construction',v.d_per||'–'],['Consommation',k?k.toLocaleString('fr-FR')+' kWh/an':'–'],['Facture',e?e.toLocaleString('fr-FR')+' €/an':'–'],['Ratio',k&&sc?Math.round(k/sc)+' kWh/m²/an':'–']];
+ let o=`<div class="cv"><img class="cl" src="${$('.lg').src}"><div class="ct"><small>AUDIT ÉNERGÉTIQUE</small><h1>Rapport de visite</h1><h2>${E(v.d_nom||'Bâtiment')}</h2><p>${E([v.d_adr,v.d_cp,v.d_vil].filter(Boolean).join(', '))}</p><p>Visite du ${d}${v.d_parc?' · Parcelle '+E(v.d_parc):''}</p></div><div class="rb" style='background:#f4f2fb ${bg} center bottom/auto 100% no-repeat'></div><div class="kp">${kp.map(([a,b])=>`<div><b>${E(b)}</b><span>${a}</span></div>`).join('')}</div><img class="cf" src="${$('.ft').src}"></div>`;
+ const tw=[];let nn=0;
+ $$('.sec').forEach((s,i)=>{if(S[i].id=='ph')return;let it=[];
   s.querySelectorAll('.g2>h3,.f').forEach(w=>{if(w.closest('[hidden]'))return;
    if(w.tagName=='H3'){it.push({h:w.textContent});return}
-   const ty=w.dataset.t;if(ty=='z')return;
+   const ty=w.dataset.t;
    if(ty=='t'){const q=tt();if(q)it.push({t:q});return}
-   if(ty=='l'){w.querySelectorAll('.lrow').forEach(rw=>{const[b,n,p]=rw.querySelectorAll('[data-k]'),on=A.v[b.dataset.k],nb=A.v[n.dataset.k],lo=A.v[p.dataset.k];if(on||nb||lo)it.push({l:b.textContent,x:'nb '+(nb||'?')+(lo?' – '+lo:'')})});return}
    const val=A.v[w.dataset.key],x=Array.isArray(val)?val.join(', '):val;if(!x||x===true)return;
-   const sp=w.querySelector(':scope>span,:scope>label>span');it.push({l:sp?sp.textContent:w.dataset.l,x})});
-  it=it.filter((e,j)=>!e.h||(it[j+1]&&!it[j+1].h));
+   const sp=w.querySelector(':scope>span,:scope>label>span');it.push({l:sp?sp.textContent:w.dataset.l,x,w:w.dataset.tw});
+   if(w.dataset.tw&&x!='Aucun')tw.push([w.dataset.l,x])});
+  it=it.filter((q,j)=>!q.h||(it[j+1]&&!it[j+1].h));
   if(!it.length)return;
-  o+=`<section><h2>${E(S[i].t)}</h2><table>`+it.map(e=>e.h?`<tr><td colspan="2" class="sh">${E(e.h)}</td></tr>`:e.t?`<tr><td colspan="2" class="tt">${E(e.t)}</td></tr>`:`<tr><td>${E(e.l)}</td><td>${E(e.x)}</td></tr>`).join('')+'</table></section>'});
- return o+`<div class="rf"><img src="${$('.ft').src}"></div><p class="rm">Document généré par l’outil de fiche de visite – ${d}</p>`}
-$('#pr').onclick=()=>{$('#dg').close();$('#rpt').innerHTML=rpt();document.body.classList.add('pr');window.onafterprint=()=>document.body.classList.remove('pr');setTimeout(()=>window.print(),200)};
+  o+=`<section><h2>${ico(S[i].id)}<span>${++nn}. ${E(S[i].t)}</span></h2><table>`+it.map(q=>q.h?`<tr><td colspan="2" class="sh">${E(q.h)}</td></tr>`:q.t?`<tr><td colspan="2" class="sh">${E(q.t)}</td></tr>`:`<tr${q.w?' class="tw"':''}><td>${E(q.l)}</td><td>${E(q.x)}</td></tr>`).join('')+'</table></section>'});
+ if(tw.length)o+=`<section><h2>${ico('t')}<span>${++nn}. Synthèse des travaux à prévoir</span></h2><table>${tw.map(([a,b])=>`<tr class="tw"><td>${E(a)}</td><td>${E(b)}</td></tr>`).join('')}</table></section>`;
+ const ps=DB?await gall():[];
+ if(ps.length)o+=`<section><h2>${ico('ph')}<span>${++nn}. Annexe photographique</span></h2><div class="pgr">${ps.map((p,j)=>`<figure><img src="${p.d}"><figcaption><b>Photo ${j+1}</b> ${E(p.cat)}${p.note?' – '+E(p.note):''}</figcaption></figure>`).join('')}</div></section>`;
+ return o+`<p class="rm">Document généré par l’outil de fiche de visite · ${d}</p>`}
+$('#pr').onclick=async()=>{$('#dg').close();$('#rpt').innerHTML=await rpt();document.body.classList.add('pr');window.onafterprint=()=>document.body.classList.remove('pr');setTimeout(()=>window.print(),500)};
 $('#cp').onclick=async e=>{const t=$('#tx');try{await navigator.clipboard.writeText(t.value)}catch(x){t.select();document.execCommand('copy')}
  e.target.textContent='Copié';setTimeout(()=>e.target.textContent='Copier le texte',1500)};
 const dl=(n,t,m)=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:m}));a.download=n;a.click()};
 $('#dt').onclick=()=>dl('fiche-visite.txt',$('#tx').value,'text/plain');
-$('#bk').onclick=()=>dl('sauvegarde-fiches.json',JSON.stringify(D),'application/json');
+$('#bk').onclick=async()=>{const pl=[];for(const a of D.l)pl.push(...await gall(a.id));dl('sauvegarde-fiches.json',JSON.stringify({...D,ph:pl}),'application/json')};
 $('#rb').onclick=()=>$('#rs').click();
-$('#rs').onchange=e=>{const r=new FileReader();r.onload=()=>{try{const j=JSON.parse(r.result);if(j.l&&j.l.length){D=j;A=D.l.find(a=>a.id==D.c)||D.l[0];D.c=A.id;save();paint();go(0);$('#dg').close()}}catch(x){alert('Fichier invalide')}};r.readAsText(e.target.files[0])};
+$('#rs').onchange=e=>{const r=new FileReader();r.onload=()=>{try{const j=JSON.parse(r.result);if(j.l&&j.l.length){const pp=j.ph||[];delete j.ph;pp.forEach(pput);D=j;A=D.l.find(a=>a.id==D.c)||D.l[0];D.c=A.id;save();paint();go(0);$('#dg').close()}}catch(x){alert('Fichier invalide')}};r.readAsText(e.target.files[0])};
 const st=m=>{$('#ast').textContent=m},AD='https://api-adresse.data.gouv.fr/';let tm,FT=[];
 async function sg(q){const s=$('#sug');if(q.length<3){s.innerHTML='';return}
  try{const j=await(await fetch(AD+'search/?limit=5&q='+encodeURIComponent(q))).json();FT=j.features;s.innerHTML=FT.map((x,i)=>`<button type="button" class="sg" data-i="${i}">${E(x.properties.label)}</button>`).join('');st('')}catch(x){s.innerHTML='';st('Suggestions indisponibles (réseau) : saisie manuelle.')}}
@@ -293,6 +243,18 @@ document.addEventListener('click',async e=>{const s=e.target.closest('.sg'),i=e.
  if(s)pick(FT[+s.dataset.i]);
  else if(i=='geo')navigator.geolocation.getCurrentPosition(async p=>{try{const lo=p.coords.longitude,la=p.coords.latitude,j=await(await fetch(AD+'reverse/?lon='+lo+'&lat='+la)).json();j.features[0]?pick(j.features[0],[lo,la]):st('Aucune adresse trouvée ici.')}catch(x){st('Réseau indisponible : saisie manuelle.')}},()=>st('Position refusée ou indisponible.'));
  else if(i=='pcl'){try{const j=await(await fetch(AD+'search/?limit=1&q='+encodeURIComponent([A.v.d_adr,A.v.d_cp,A.v.d_vil].join(' ')))).json();j.features[0]?pcl(...j.features[0].geometry.coordinates):st('Adresse introuvable.')}catch(x){st('Réseau indisponible : saisie manuelle.')}}});
+let DB,pn=0;const PC=['Façade / vue générale','Murs','Toiture / combles','Menuiseries','Chaufferie / générateur','Émetteurs','ECS / ballon','Ventilation','Éclairage','Compteurs / plaques','Autre'];
+const rq=indexedDB.open('fa-photos',1);rq.onupgradeneeded=()=>rq.result.createObjectStore('p',{keyPath:'id'});rq.onsuccess=()=>{DB=rq.result;ph()};
+const os=m=>DB.transaction('p',m).objectStore('p'),
+ gall=(id=A.id)=>new Promise(r=>{const x=os('readonly').getAll();x.onsuccess=()=>r(x.result.filter(p=>p.aid==id).sort((a,b)=>a.t-b.t))}),
+ pput=p=>new Promise(r=>{const x=os('readwrite').put(p);x.onsuccess=r}),
+ pdel=id=>new Promise(r=>{const x=os('readwrite').delete(id);x.onsuccess=r});
+const rsz=fl=>new Promise(res=>{const im=new Image(),u=URL.createObjectURL(fl);im.onload=()=>{const z=Math.min(1,1400/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*z;c.height=im.height*z;c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);res(c.toDataURL('image/jpeg',.72))};im.src=u});
+async function ph(){if(!DB||!$('#pg'))return;const l=await gall();$('#pg').innerHTML=l.length?l.map(p=>`<div class="pc" data-id="${p.id}"><img src="${p.d}" alt=""><select data-pc="cat"><option value="">Catégorie…</option>${PC.map(c=>`<option${c==p.cat?' selected':''}>${c}</option>`).join('')}</select><input data-pc="note" placeholder="Légende (facultatif)" value="${E(p.note)}"><button type="button" class="btn" data-pd="${p.id}">Supprimer</button></div>`).join(''):'<p class="mu">Aucune photo pour cette fiche.</p>'}
+document.addEventListener('click',e=>{const b=e.target;if(b.id=='cam')$('#fcam').click();else if(b.id=='imp')$('#fimp').click();else if(b.dataset&&b.dataset.pd)pdel(+b.dataset.pd).then(ph)});
+document.addEventListener('change',async e=>{const t=e.target;
+ if(t.id=='fcam'||t.id=='fimp'){for(const fl of [...t.files])await pput({id:Date.now()*100+(pn++%100),aid:A.id,cat:'',note:'',d:await rsz(fl),t:Date.now()});t.value='';ph();return}
+ if(t.dataset.pc){const id=+t.closest('.pc').dataset.id,p=(await gall()).find(x=>x.id==id);if(p){p[t.dataset.pc]=t.value;await pput(p)}}});
 paint();go(0);
 </script>
 </body>
